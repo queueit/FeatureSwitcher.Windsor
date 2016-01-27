@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FeatureSwitcher.Windsor</id>
+	<title>Castle Windsor plugin for FeatureSwitcher</title>
+    <version>$version$</version>
+    <authors>Queue-it</authors>
+    <owners>Queue-it</owners>
+    <licenseUrl>https://github.com/queueit/FeatureSwitcher.Windsor/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/queueit/FeatureSwitcher.Windsor</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Castle Windsor plugin for FeatureSwitcher</description>
+  </metadata>
+  <files>
+	<file src="src\FeatureSwitcher.Windsor\bin\$configuration$\TFeatureSwitcher.Windsor.dll" target="lib\net45\" />
+  </files>
+</package>

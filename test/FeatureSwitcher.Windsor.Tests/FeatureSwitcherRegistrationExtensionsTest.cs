@@ -85,7 +85,8 @@ namespace FeatureSwitcher.Windsor.Tests
             container.Kernel.Register(
                 FeatureSwitch.For<IService>()
                     .UsingFeature<TestFeature>()
-                    .ImplementedBy<ServiceEnabled, ServiceDisabled>());
+                    .ImplementedBy<ServiceEnabled, ServiceDisabled>()
+                    .Configure(c => c.LifestyleTransient()));
 
             var actualService = container.Resolve<IService>();
             return actualService;

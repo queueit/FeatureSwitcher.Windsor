@@ -16,6 +16,6 @@
     </dependencies>
   </metadata>
   <files>
-	  <file src="src\FeatureSwitcher.Windsor\bin\$configuration$\FeatureSwitcher.Windsor.dll" target="lib\net45\" />
+	  <file src="bin\$configuration$\FeatureSwitcher.Windsor.dll" target="lib\net45\" />
   </files>
 </package>

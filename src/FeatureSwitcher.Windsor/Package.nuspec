@@ -13,6 +13,7 @@
 	<tags>DependencyInjection BranchByAbstraction FeatureSwitcher FeatureToggle</tags>
     <dependencies>
       <dependency id="Castle.Windsor" version="3.3.0" />
+      <dependency id="FeatureSwitcher" version="1.1.0" />
     </dependencies>
   </metadata>
   <files>

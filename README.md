@@ -29,7 +29,7 @@ container.Kernel.Register(
         .For<IService>()
         .UsingFeature<TestFeature>()
         .ImplementedBy<ServiceEnabled, ServiceDisabled>()
-         .Configure(c => c.LifestyleTransient()));
+        .Configure(c => c.LifestyleTransient()));
 ```
 
 ```c#
@@ -39,7 +39,7 @@ container.Kernel.Register(
         .For<IService>()
         .UsingFeature<TestFeature>()
         .ImplementedBy<ServiceEnabled, ServiceDisabled>()
-         .ConfigureEnabled(c => c.LifestyleTransient()));
+        .ConfigureEnabled(c => c.LifestyleTransient()));
 ```
 
 ```c#
@@ -49,5 +49,5 @@ container.Kernel.Register(
         .For<IService>()
         .UsingFeature<TestFeature>()
         .ImplementedBy<ServiceEnabled, ServiceDisabled>()
-         .ConfigureDisabled(c => c.LifestyleTransient()));
+        .ConfigureDisabled(c => c.LifestyleTransient()));
 ```

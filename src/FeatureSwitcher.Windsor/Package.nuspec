@@ -15,4 +15,7 @@
       <dependency id="Castle.Windsor" version="3.3.0" />
     </dependencies>
   </metadata>
+  <files>
+	  <file src="src\FeatureSwitcher.Windsor\bin\$configuration$\FeatureSwitcher.Windsor.dll" target="lib\net45\" />
+  </files>
 </package>

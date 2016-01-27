@@ -16,7 +16,7 @@ namespace FeatureSwitcher.Windsor.Tests
         {
             var actualService = this.Test(false);
 
-            Assert.IsType<Service1>(actualService);
+            Assert.IsType<ServiceDisabled>(actualService);
         }
 
         [Fact]
@@ -24,7 +24,54 @@ namespace FeatureSwitcher.Windsor.Tests
         {
             var actualService = this.Test(true);
 
-            Assert.IsType<Service2>(actualService);
+            Assert.IsType<ServiceEnabled>(actualService);
+        }
+
+        [Fact]
+        public void FeatureSwitcherRegistrationExtensions_Lifecycle_DisposeTransient_Test()
+        {
+            var mockBehaviour = new MockBooleanBehaviour(false);
+            FeatureSwitcher.Configuration.Features.Are.ConfiguredBy.Custom(mockBehaviour.Behaviour);
+
+            WindsorContainer container = new WindsorContainer();
+            container.AddFacility<FeatureSwitcherFacility>();
+
+            container.Kernel.Register(
+                Component.For<ServiceConsumer>()
+                    .LifestyleTransient(),
+                FeatureSwitch.For<IService>()
+                    .UsingFeature<TestFeature>()
+                    .ImplementedBy<ServiceEnabled, ServiceDisabled>()
+                    .Configure(c => c.LifestyleTransient()));
+
+            var actualConsumer = container.Resolve<ServiceConsumer>();
+            container.Release(actualConsumer);
+
+            Assert.True(actualConsumer.Disposed);
+            Assert.True(actualConsumer.Service.Disposed);
+        }
+
+        [Fact]
+        public void FeatureSwitcherRegistrationExtensions_Lifecycle_DoNotDisposeSingleton_Test()
+        {
+            var mockBehaviour = new MockBooleanBehaviour(false);
+            FeatureSwitcher.Configuration.Features.Are.ConfiguredBy.Custom(mockBehaviour.Behaviour);
+
+            WindsorContainer container = new WindsorContainer();
+            container.AddFacility<FeatureSwitcherFacility>();
+
+            container.Kernel.Register(
+                Component.For<ServiceConsumer>()
+                    .LifestyleTransient(),
+                FeatureSwitch.For<IService>()
+                    .UsingFeature<TestFeature>()
+                    .ImplementedBy<ServiceEnabled, ServiceDisabled>());
+
+            var actualConsumer = container.Resolve<ServiceConsumer>();
+            container.Release(actualConsumer);
+
+            Assert.True(actualConsumer.Disposed);
+            Assert.False(actualConsumer.Service.Disposed);
         }
 
         private IService Test(bool enabled)
@@ -33,17 +80,32 @@ namespace FeatureSwitcher.Windsor.Tests
             FeatureSwitcher.Configuration.Features.Are.ConfiguredBy.Custom(mockBehaviour.Behaviour);
 
             WindsorContainer container = new WindsorContainer();
+            container.AddFacility<FeatureSwitcherFacility>();
 
             container.Kernel.Register(
-                Classes.FromThisAssembly()
-                    .BasedOn<IService>()
-                    .WithServices(),
-                Component
-                    .For<IService>()
-                    .AsFeatureSwitch<IService, TestFeature, Service1, Service2>());
+                FeatureSwitch.For<IService>()
+                    .UsingFeature<TestFeature>()
+                    .ImplementedBy<ServiceEnabled, ServiceDisabled>());
 
             var actualService = container.Resolve<IService>();
             return actualService;
         }
+    }
+
+    public class ServiceConsumer : IDisposable
+    {
+        public IService Service { get; }
+
+        public ServiceConsumer(IService service)
+        {
+            Service = service;
+        }
+
+        public void Dispose()
+        {
+            this.Disposed = true;
+        }
+
+        public bool Disposed { get; set; }
     }
 }

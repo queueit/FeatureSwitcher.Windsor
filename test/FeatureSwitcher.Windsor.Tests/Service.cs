@@ -6,15 +6,26 @@ using System.Threading.Tasks;
 
 namespace FeatureSwitcher.Windsor.Tests
 {
-    public class Service1 : IService
+    public class ServiceBase : IService
+    {
+        public bool Disposed { get; set; }
+
+        public void Dispose()
+        {
+            this.Disposed = true;
+        }
+    }
+
+    public class ServiceEnabled : ServiceBase
     {
     }
 
-    public class Service2 : IService
+    public class ServiceDisabled : ServiceBase
     {
     }
 
-    public interface IService
+    public interface IService : IDisposable
     {
+        bool Disposed { get; }
     }
 }

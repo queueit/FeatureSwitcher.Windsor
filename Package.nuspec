@@ -10,6 +10,10 @@
     <projectUrl>https://github.com/queueit/FeatureSwitcher.Windsor</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Castle Windsor plugin for FeatureSwitcher</description>
+	<tags>DependencyInjection BranchByAbstraction FeatureSwitcher FeatureToggle</tags>
+    <dependencies>
+      <dependency id="Castle.Windsor" version="3.3.0" />
+    </dependencies>
   </metadata>
   <files>
 	<file src="src\FeatureSwitcher.Windsor\bin\$configuration$\TFeatureSwitcher.Windsor.dll" target="lib\net45\" />

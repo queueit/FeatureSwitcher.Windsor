@@ -1,5 +1,5 @@
 # FeatureSwitcher.Windsor
-Castle Windsor plugin for FeatureSwitcher https://github.com/mexx/FeatureSwitcher
+Castle Windsor IoC plugin for FeatureSwitcher https://github.com/mexx/FeatureSwitcher
 
 #Usage
 
@@ -11,7 +11,8 @@ container.AddFacility<FeatureSwitcherFacility>();
 
 // Register feature switcher service
 container.Kernel.Register(
-    FeatureSwitch.For<IService>()
+    FeatureSwitch
+        .For<IService>()
         .UsingFeature<TestFeature>()
         .ImplementedBy<ServiceEnabled, ServiceDisabled>());
 

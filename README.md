@@ -51,3 +51,6 @@ container.Kernel.Register(
         .ImplementedBy<ServiceEnabled, ServiceDisabled>()
         .ConfigureDisabled(c => c.LifestyleTransient()));
 ```
+
+#NuGet
+Install-Package FeatureSwitcher.Windsor

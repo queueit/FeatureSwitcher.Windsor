@@ -1,5 +1,5 @@
 # FeatureSwitcher.Windsor
-Castle Windsor IoC plugin for FeatureSwitcher https://github.com/mexx/FeatureSwitcher. This plugin will toggle two concreate implementations of an interface (service) based on the state of the feature (Enabled/Disabled)
+Castle Windsor IoC plugin for FeatureSwitcher https://github.com/mexx/FeatureSwitcher. This plugin will toggle two concreate implementations of an interface (service) based on the state of the feature (Enabled/Disabled). The state of the feature is determined when the service is resolved.
 
 #Usage
 ```c#

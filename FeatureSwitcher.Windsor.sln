@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitcher.Windsor", "src\FeatureSwitcher.Windsor\FeatureSwitcher.Windsor.csproj", "{71C858D2-0D90-4AD6-A036-D8C42F1A42C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureSwitcher.Windsor.Tests", "test\FeatureSwitcher.Windsor.Tests\FeatureSwitcher.Windsor.Tests.csproj", "{674CFF27-F2A4-45C9-B73A-A907D5C5F517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AE988D05-A6D7-40B9-8A27-8ADA00AFBCAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71C858D2-0D90-4AD6-A036-D8C42F1A42C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C858D2-0D90-4AD6-A036-D8C42F1A42C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C858D2-0D90-4AD6-A036-D8C42F1A42C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C858D2-0D90-4AD6-A036-D8C42F1A42C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674CFF27-F2A4-45C9-B73A-A907D5C5F517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674CFF27-F2A4-45C9-B73A-A907D5C5F517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674CFF27-F2A4-45C9-B73A-A907D5C5F517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674CFF27-F2A4-45C9-B73A-A907D5C5F517}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

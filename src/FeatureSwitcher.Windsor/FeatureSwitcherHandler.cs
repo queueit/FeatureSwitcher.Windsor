@@ -12,7 +12,7 @@ namespace FeatureSwitcher.Windsor
     {
         internal const string ExtendedPropertyName = "FeatureSwitcher.Windsor";
 
-        private readonly Dictionary<Type, bool> _featureSwitcherServiceTypes = new Dictionary<Type, bool>();
+        private readonly HashSet<Type> _featureSwitcherServiceTypes = new HashSet<Type>();
 
         internal void Kernel_HandlerRegistered(IHandler handler, ref bool stateChanged)
         {
@@ -22,13 +22,13 @@ namespace FeatureSwitcher.Windsor
             if (metadata == null)
                 return;
 
-            if (!this._featureSwitcherServiceTypes.ContainsKey(metadata.Service))
-                this._featureSwitcherServiceTypes.Add(metadata.Service, true);
+            if (!this._featureSwitcherServiceTypes.Contains(metadata.Service))
+                this._featureSwitcherServiceTypes.Add(metadata.Service);
         }
 
         public bool HasOpinionAbout(string key, Type service)
         {
-            return this._featureSwitcherServiceTypes.ContainsKey(service);
+            return this._featureSwitcherServiceTypes.Contains(service);
         }
 
         public IHandler SelectHandler(string key, Type service, IHandler[] handlers)

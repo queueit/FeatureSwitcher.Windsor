@@ -8,6 +8,10 @@ WindsorContainer container = new WindsorContainer();
 // Register Facility
 container.AddFacility<FeatureSwitcherFacility>();
 
+// Set up feature switcher
+Features.Are
+    .ConfiguredBy.Custom(Features.OfType<TestFeature>.Enabled)
+
 // Register feature switcher service
 container.Kernel.Register(
     FeatureSwitch

@@ -3,14 +3,14 @@ Castle Windsor IoC plugin for FeatureSwitcher https://github.com/mexx/FeatureSwi
 
 #Usage
 ```c#
+// Set up feature switcher - Enable feature 'TestFeature'
+Features.Are
+    .ConfiguredBy.Custom(Features.OfType<TestFeature>.Enabled)
+
 // Create Windsor container
 WindsorContainer container = new WindsorContainer();
 // Register Facility
 container.AddFacility<FeatureSwitcherFacility>();
-
-// Set up feature switcher - Enable feature 'TestFeature'
-Features.Are
-    .ConfiguredBy.Custom(Features.OfType<TestFeature>.Enabled)
 
 // Register feature switcher service
 container.Kernel.Register(
@@ -21,7 +21,9 @@ container.Kernel.Register(
 
 // Resolve service. An instance of ServiceEnabled will be returned 
 // if the feature of type TestFeature is enabled. If disabled it 
-// returns an instance of ServiceDisabled
+// returns an instance of ServiceDisabled. (In this case an instance 
+// of the ServiceEnabled class is returned as the feature is configured 
+// to be enabled)
 var actualService = container.Resolve<IService>();
 ```
 
